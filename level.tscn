@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://bed7u2x8df7up"]
+
+[ext_resource type="Texture2D" uid="uid://b644lkuswoftv" path="res://bg.jpg" id="1_f2txt"]
+[ext_resource type="PackedScene" uid="uid://b8ioturxhvhg5" path="res://player.tscn" id="1_u52ul"]
+[ext_resource type="PackedScene" uid="uid://igc58ll8bpd7" path="res://pad.tscn" id="2_vonw3"]
+[ext_resource type="PackedScene" uid="uid://ml5yc0b2ja3o" path="res://spike.tscn" id="3_oi3di"]
+[ext_resource type="PackedScene" uid="uid://cdp606c4l2yc1" path="res://goal.tscn" id="4_0b4ue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahmb0"]
+size = Vector2(30000, 40)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p20yd"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_0b4ue"]
+font_size = 32
+font_color = Color(0.9997532, 0.477652, 0.41378137, 1)
+
+[node name="Level" type="Node2D" unique_id=1922790809]
+
+[node name="Background" type="Parallax2D" parent="." unique_id=524772196]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(2880, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=1182980425]
+scale = Vector2(2.4104168, 2.6875)
+texture = ExtResource("1_f2txt")
+centered = false
+
+[node name="CharacterBody2D" parent="." unique_id=637779355 instance=ExtResource("1_u52ul")]
+position = Vector2(576, 100)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=368505521]
+position_smoothing_enabled = true
+
+[node name="floor" type="StaticBody2D" parent="." unique_id=1308364004]
+position = Vector2(576, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor" unique_id=1492737008]
+shape = SubResource("RectangleShape2D_ahmb0")
+
+[node name="pad" parent="." unique_id=1491827375 instance=ExtResource("2_vonw3")]
+position = Vector2(777, 556)
+
+[node name="pad" parent="pad" unique_id=1530927307 instance=ExtResource("2_vonw3")]
+position = Vector2(178, -60)
+
+[node name="pad2" parent="pad" unique_id=267306549 instance=ExtResource("2_vonw3")]
+position = Vector2(-264, -35)
+
+[node name="Spike" parent="." unique_id=1852113977 instance=ExtResource("3_oi3di")]
+position = Vector2(814, 441)
+
+[node name="goal" parent="." unique_id=2125473654 instance=ExtResource("4_0b4ue")]
+position = Vector2(296, 480)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=561546444]
+
+[node name="WinLabel" type="Label" parent="CanvasLayer" unique_id=1572229374]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU WIN"
+label_settings = SubResource("LabelSettings_p20yd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeathLabel" type="Label" parent="CanvasLayer" unique_id=2080466745]
+offset_left = 27.0
+offset_top = 28.0
+offset_right = 152.0
+offset_bottom = 127.0
+text = "Deaths: 0"
+label_settings = SubResource("LabelSettings_0b4ue")
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer" unique_id=879034559]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 0.069000006
+offset_left = -114.0
+offset_top = 34.0
+offset_right = -69.0
+offset_bottom = 34.287994
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "0.0"

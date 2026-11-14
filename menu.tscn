@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cydmf0k5oinwa"]
+
+[ext_resource type="Texture2D" uid="uid://i5darjywpu4" path="res://hero-bg.png" id="1_lti8b"]
+[ext_resource type="Script" uid="uid://1m562bb8vvpg" path="res://menu.gd" id="1_ouk20"]
+
+[node name="Control" type="Control" unique_id=1379343255]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ouk20")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=183471310]
+position = Vector2(577, 319)
+scale = Vector2(0.7944444, 0.6372549)
+texture = ExtResource("1_lti8b")
+
+[node name="Label" type="Label" parent="." unique_id=153171694]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 77.0
+offset_right = 917.0
+offset_bottom = 242.0
+theme_override_colors/font_color = Color(0.3029792, 0.69690865, 0.6894899, 1)
+theme_override_font_sizes/font_size = 120
+text = "REBOUNCE"
+
+[node name="Button" type="Button" parent="." unique_id=613933301]
+layout_mode = 0
+offset_left = 506.0
+offset_top = 294.0
+offset_right = 643.0
+offset_bottom = 390.0
+theme_override_colors/font_color = Color(0.4509804, 0.8745098, 0.8745098, 1)
+theme_override_font_sizes/font_size = 64
+text = "Play"
+
+[node name="Button2" type="Button" parent="." unique_id=953876979]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 417.0
+offset_right = 687.0
+offset_bottom = 563.0
+theme_override_colors/font_color = Color(0.11764706, 0.8745098, 0.8745098, 1)
+theme_override_font_sizes/font_size = 32
+text = "Select
+Characters
+"
