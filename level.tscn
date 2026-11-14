@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cdp606c4l2yc1" path="res://goal.tscn" id="4_0b4ue"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ahmb0"]
-size = Vector2(30000, 40)
+size = Vector2(4000, 40)
 
 [sub_resource type="LabelSettings" id="LabelSettings_p20yd"]
 font_size = 64
