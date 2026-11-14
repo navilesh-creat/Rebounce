@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://deho1fpnyqrnd" path="res://kill_zone.gd" id="7_n6hdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ahmb0"]
-size = Vector2(4000, 40)
+size = Vector2(4397, 40)
 
 [sub_resource type="LabelSettings" id="LabelSettings_p20yd"]
 font_size = 64
@@ -21,6 +21,9 @@ font_color = Color(0.9997532, 0.477652, 0.41378137, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvfp6"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ty30s"]
+size = Vector2(100, 3000)
+
 [node name="Level" type="Node2D" unique_id=1922790809]
 
 [node name="Powerup" parent="." unique_id=1544786388 instance=ExtResource("6_i2t4f")]
@@ -29,7 +32,7 @@ position = Vector2(372, 221)
 
 [node name="Powerup2" parent="." unique_id=2064249479 instance=ExtResource("6_i2t4f")]
 z_index = 5
-position = Vector2(372, 221)
+position = Vector2(400, 221)
 kind = "jump"
 
 [node name="Background" type="Parallax2D" parent="." unique_id=524772196]
@@ -47,13 +50,20 @@ centered = false
 position = Vector2(576, 100)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=368505521]
+limit_left = 0
+limit_right = 2950
+limit_bottom = 650
 position_smoothing_enabled = true
 
 [node name="floor" type="StaticBody2D" parent="." unique_id=1308364004]
 position = Vector2(576, 600)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor" unique_id=1492737008]
+position = Vector2(198.5, 0)
 shape = SubResource("RectangleShape2D_ahmb0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="floor" unique_id=1785945654]
+z_index = 10
 
 [node name="pad" parent="." unique_id=1491827375 instance=ExtResource("2_vonw3")]
 position = Vector2(777, 556)
@@ -151,3 +161,15 @@ script = ExtResource("7_n6hdu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=1155115804]
 position = Vector2(6000, 100)
 shape = SubResource("RectangleShape2D_dvfp6")
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=1109455152]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=1773671882]
+position = Vector2(-50, 0)
+shape = SubResource("RectangleShape2D_ty30s")
+
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=656773465]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=420682261]
+position = Vector2(2965, 36)
+shape = SubResource("RectangleShape2D_ty30s")
