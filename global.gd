@@ -6,7 +6,7 @@ var player := AudioStreamPlayer.new()
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	player.stream = load("res://music.mp4")
+	player.stream = load("res://music.mp3")
 	player.volume_db = -8.0
 	add_child(player)
 	player.finished.connect(player.play)
