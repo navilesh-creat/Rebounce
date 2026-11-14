@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://igc58ll8bpd7" path="res://pad.tscn" id="2_vonw3"]
 [ext_resource type="PackedScene" uid="uid://ml5yc0b2ja3o" path="res://spike.tscn" id="3_oi3di"]
 [ext_resource type="PackedScene" uid="uid://cdp606c4l2yc1" path="res://goal.tscn" id="4_0b4ue"]
+[ext_resource type="Texture2D" uid="uid://4565oydhww52" path="res://platform.jpg" id="4_i2t4f"]
 [ext_resource type="Script" uid="uid://bgf0g2e8x2e8w" path="res://pause_layer.gd" id="6_1ainy"]
 [ext_resource type="PackedScene" uid="uid://7xcoa366edvd" path="res://powerup.tscn" id="6_i2t4f"]
 [ext_resource type="Script" uid="uid://deho1fpnyqrnd" path="res://kill_zone.gd" id="7_n6hdu"]
@@ -62,8 +63,20 @@ position = Vector2(576, 600)
 position = Vector2(198.5, 0)
 shape = SubResource("RectangleShape2D_ahmb0")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="floor" unique_id=1785945654]
-z_index = 10
+[node name="Sprite2D" type="Sprite2D" parent="floor/CollisionShape2D" unique_id=1823425145]
+position = Vector2(-198, 51.000034)
+scale = Vector2(1.1602823, 0.8756758)
+texture = ExtResource("4_i2t4f")
+
+[node name="Sprite2D2" type="Sprite2D" parent="floor/CollisionShape2D" unique_id=1369133621]
+position = Vector2(952, 51.000034)
+scale = Vector2(1.1602823, 0.8756758)
+texture = ExtResource("4_i2t4f")
+
+[node name="Sprite2D3" type="Sprite2D" parent="floor/CollisionShape2D" unique_id=1730087495]
+position = Vector2(2101.9985, 51.000034)
+scale = Vector2(1.1602823, 0.8756758)
+texture = ExtResource("4_i2t4f")
 
 [node name="pad" parent="." unique_id=1491827375 instance=ExtResource("2_vonw3")]
 position = Vector2(777, 556)
@@ -77,8 +90,26 @@ position = Vector2(-264, -35)
 [node name="Spike" parent="." unique_id=1852113977 instance=ExtResource("3_oi3di")]
 position = Vector2(814, 441)
 
+[node name="Spike2" parent="." unique_id=1222409291 instance=ExtResource("3_oi3di")]
+position = Vector2(1500, 441)
+
+[node name="Spike3" parent="." unique_id=608078819 instance=ExtResource("3_oi3di")]
+position = Vector2(814, 441)
+
+[node name="Spike4" parent="." unique_id=100904233 instance=ExtResource("3_oi3di")]
+position = Vector2(814, 441)
+
+[node name="Spike5" parent="." unique_id=1803531567 instance=ExtResource("3_oi3di")]
+position = Vector2(814, 441)
+
+[node name="Spike6" parent="." unique_id=1312730478 instance=ExtResource("3_oi3di")]
+position = Vector2(814, 441)
+
+[node name="Spike7" parent="." unique_id=127382314 instance=ExtResource("3_oi3di")]
+position = Vector2(814, 441)
+
 [node name="goal" parent="." unique_id=2125473654 instance=ExtResource("4_0b4ue")]
-position = Vector2(296, 480)
+position = Vector2(1711, 295)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=561546444]
 
