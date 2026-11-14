@@ -1,10 +1,16 @@
 [gd_scene format=3 uid="uid://b78nww0ttwgi3"]
 
 [ext_resource type="Texture2D" uid="uid://cx2h0h6te8be6" path="res://Untitled_design-removebg-preview.png" id="1_qyqqv"]
+[ext_resource type="Script" uid="uid://dhu5pae2tdh78" path="res://characters.gd" id="1_rw00v"]
 [ext_resource type="Texture2D" uid="uid://dcbs2twk3ngew" path="res://Untitled_design__1_-removebg-preview.png" id="2_ewidt"]
 [ext_resource type="Texture2D" uid="uid://bq520j1lgg1s4" path="res://Untitled_design__2_-removebg-preview.png" id="3_ifjty"]
 [ext_resource type="Texture2D" uid="uid://c3xuc1kjmk1t7" path="res://Untitled_design__3_-removebg-preview.png" id="4_gwi7s"]
 [ext_resource type="Texture2D" uid="uid://2gusntl6a3fe" path="res://Untitled_design__4_-removebg-preview (1).png" id="5_vcy1y"]
+[ext_resource type="Texture2D" uid="uid://d31fxek52q3of" path="res://Untitled_design__5_-removebg-preview.png" id="7_6ks6p"]
+[ext_resource type="Texture2D" uid="uid://4qphvrxv31e0" path="res://Untitled_design__6_-removebg-preview.png" id="8_g5qle"]
+[ext_resource type="Texture2D" uid="uid://dlbma4g80a6uh" path="res://Untitled_design__7_-removebg-preview.png" id="9_ojrnl"]
+[ext_resource type="Texture2D" uid="uid://2rdxvo8no8ja" path="res://Untitled_design__8_-removebg-preview.png" id="10_8bd3u"]
+[ext_resource type="Texture2D" uid="uid://chf4rdsf1k2a0" path="res://Untitled_design__9_-removebg-preview.png" id="11_vrm1u"]
 
 [node name="Control" type="Control" unique_id=1805696683]
 layout_mode = 3
@@ -13,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rw00v")
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=1231462552]
 layout_mode = 0
@@ -27,21 +34,69 @@ offset_top = 165.0
 offset_right = 740.0
 offset_bottom = 665.0
 texture = ExtResource("2_ewidt")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=2090838908]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_ifjty")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TextureRect3" type="TextureRect" parent="." unique_id=890879901]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("4_gwi7s")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TextureRect4" type="TextureRect" parent="." unique_id=1479350544]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_vcy1y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="." unique_id=1816213472]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_6ks6p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect6" type="TextureRect" parent="." unique_id=1004452123]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_g5qle")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect7" type="TextureRect" parent="." unique_id=1273573335]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_ojrnl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect8" type="TextureRect" parent="." unique_id=1320080643]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_8bd3u")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect9" type="TextureRect" parent="." unique_id=1104139672]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("11_vrm1u")
+expand_mode = 1
+stretch_mode = 5

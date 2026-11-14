@@ -18,6 +18,12 @@ func _ready():
 	add_keys("right", [KEY_D, KEY_RIGHT])
 	add_keys("jump", [KEY_W, KEY_UP, KEY_SPACE])
 	spawn_pos = global_position
+	if Global.skin:
+		sprite.texture = Global.skin
+		var img = Global.skin.get_image()
+		var r = img.get_used_rect()
+		sprite.offset = Vector2(img.get_size()) / 2.0 - Vector2(r.get_center())
+		sprite.scale = Vector2.ONE * (60.0 / r.size.x) / scale.x
 
 func add_keys(action, keys):
 	if not InputMap.has_action(action):
@@ -43,7 +49,7 @@ func die():
 	get_tree().current_scene.get_node("CanvasLayer/DeathLabel").text = "Deaths: " + str(deaths)
 	global_position = spawn_pos
 	velocity = Vector2.ZERO
-	
+
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_R:
 		die()
