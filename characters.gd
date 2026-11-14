@@ -1,7 +1,7 @@
 extends Control
 
-const SIZE := 170.0
-const GAP := 24.0
+const SIZE := 200.0
+const GAP := 16.0
 const COLS := 5
 
 func _ready():
@@ -13,9 +13,12 @@ func _ready():
 		elif c is TextureButton:
 			c.hide()
 
-	var bg = ColorRect.new()
-	bg.color = Color(0.08, 0.1, 0.18)
+	var bg = TextureRect.new()
+	bg.texture = load("res://hero-bg.png")
+	bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	bg.size = vs
+	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(bg)
 	move_child(bg, 0)
 
@@ -40,6 +43,14 @@ func _ready():
 
 	for i in n:
 		var pic = pics[i]
+		var orig = pic.texture
+
+		var img = orig.get_image()
+		var at = AtlasTexture.new()
+		at.atlas = orig
+		at.region = Rect2(img.get_used_rect())
+		pic.texture = at
+
 		var row = i / COLS
 		var col = i % COLS
 		var in_row = min(COLS, n - row * COLS)
@@ -57,5 +68,5 @@ func _ready():
 		pic.mouse_exited.connect(func(): pic.scale = Vector2.ONE)
 		pic.gui_input.connect(func(e):
 			if e is InputEventMouseButton and e.pressed and e.button_index == MOUSE_BUTTON_LEFT:
-				Global.skin = pic.texture
+				Global.skin = orig
 				get_tree().change_scene_to_file("res://menu.tscn"))

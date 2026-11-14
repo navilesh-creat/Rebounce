@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ml5yc0b2ja3o" path="res://spike.tscn" id="3_oi3di"]
 [ext_resource type="PackedScene" uid="uid://cdp606c4l2yc1" path="res://goal.tscn" id="4_0b4ue"]
 [ext_resource type="Script" uid="uid://bgf0g2e8x2e8w" path="res://pause_layer.gd" id="6_1ainy"]
+[ext_resource type="PackedScene" uid="uid://7xcoa366edvd" path="res://powerup.tscn" id="6_i2t4f"]
 [ext_resource type="Script" uid="uid://deho1fpnyqrnd" path="res://kill_zone.gd" id="7_n6hdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ahmb0"]
@@ -22,11 +23,22 @@ font_color = Color(0.9997532, 0.477652, 0.41378137, 1)
 
 [node name="Level" type="Node2D" unique_id=1922790809]
 
+[node name="Powerup" parent="." unique_id=1544786388 instance=ExtResource("6_i2t4f")]
+z_index = 5
+position = Vector2(372, 221)
+
+[node name="Powerup2" parent="." unique_id=2064249479 instance=ExtResource("6_i2t4f")]
+z_index = 5
+position = Vector2(372, 221)
+kind = "jump"
+
 [node name="Background" type="Parallax2D" parent="." unique_id=524772196]
 scroll_scale = Vector2(0, 0)
+scroll_offset = Vector2(-135, -41)
 repeat_size = Vector2(2880, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=1182980425]
+position = Vector2(132, 38)
 scale = Vector2(2.4104168, 2.6875)
 texture = ExtResource("1_f2txt")
 centered = false
@@ -133,6 +145,7 @@ text = "Main Menu"
 [node name="Sprite2D" type="Sprite2D" parent="PauseLayer" unique_id=131959525]
 
 [node name="KillZone" type="Area2D" parent="." unique_id=413350226]
+position = Vector2(-107, -183)
 script = ExtResource("7_n6hdu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=1155115804]
