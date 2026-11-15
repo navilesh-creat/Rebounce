@@ -1,8 +1,13 @@
 extends CharacterBody2D
 
 const GRAVITY = 1200.0
+const FALL_MULT = 1.6
 const JUMP = -650.0
 const SPEED = 250.0
+const ACCEL = 6000.0
+const FRICTION = 3000.0
+const COYOTE = 0.12
+const BUFFER = 0.12
 const BOUNCINESS = 0.5
 const MIN_BOUNCE = 150.0
 const BOOST_TIME = 6.0
@@ -13,6 +18,9 @@ var spawn_pos: Vector2
 var deaths := 0
 var speed_time := 0.0
 var jump_time := 0.0
+var coyote := 0.0
+var buffer := 0.0
+var jumping := false
 var speed_label: Label
 var jump_label: Label
 
@@ -68,10 +76,37 @@ func _physics_process(delta):
 	var sm = 1.6 if speed_time > 0.0 else 1.0
 	var jm = 1.3 if jump_time > 0.0 else 1.0
 
-	velocity.y += GRAVITY * delta
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if is_on_floor():
+		coyote = COYOTE
+	else:
+		coyote = max(coyote - delta, 0.0)
+	if Input.is_action_just_pressed("jump"):
+		buffer = BUFFER
+	else:
+		buffer = max(buffer - delta, 0.0)
+
+	var g = GRAVITY
+	if velocity.y > 0.0:
+		g = GRAVITY * FALL_MULT
+	velocity.y += g * delta
+
+	if buffer > 0.0 and coyote > 0.0:
 		velocity.y = JUMP * jm
-	velocity.x = Input.get_axis("left", "right") * SPEED * sm
+		jumping = true
+		buffer = 0.0
+		coyote = 0.0
+	if jumping and velocity.y >= 0.0:
+		jumping = false
+	if jumping and not Input.is_action_pressed("jump"):
+		velocity.y *= 0.55
+		jumping = false
+
+	var dir = Input.get_axis("left", "right")
+	var rate = FRICTION
+	if dir != 0.0:
+		rate = ACCEL
+	velocity.x = move_toward(velocity.x, dir * SPEED * sm, rate * delta)
+
 	fall_speed = velocity.y
 	move_and_slide()
 	if is_on_floor() and fall_speed > MIN_BOUNCE:
@@ -101,6 +136,7 @@ func die():
 	get_tree().current_scene.get_node("CanvasLayer/DeathLabel").text = "Deaths: " + str(deaths)
 	speed_time = 0.0
 	jump_time = 0.0
+	jumping = false
 	global_position = spawn_pos
 	velocity = Vector2.ZERO
 
