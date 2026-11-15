@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://7xcoa366edvd"]
+
+[ext_resource type="Script" uid="uid://ca4niv0431kw1" path="res://powerup.gd" id="1_vcqqu"]
+
+[node name="Powerup" type="Area2D" unique_id=1544786388]
+script = ExtResource("1_vcqqu")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=1619279279]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 59.0
+offset_right = 3.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Dim"
+color = Color(0, 0, 0, 0.5882353)

@@ -5,9 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://igc58ll8bpd7" path="res://pad.tscn" id="2_vonw3"]
 [ext_resource type="PackedScene" uid="uid://ml5yc0b2ja3o" path="res://spike.tscn" id="3_oi3di"]
 [ext_resource type="PackedScene" uid="uid://cdp606c4l2yc1" path="res://goal.tscn" id="4_0b4ue"]
+[ext_resource type="Texture2D" uid="uid://4565oydhww52" path="res://platform.jpg" id="4_i2t4f"]
+[ext_resource type="Script" uid="uid://bgf0g2e8x2e8w" path="res://pause_layer.gd" id="6_1ainy"]
+[ext_resource type="PackedScene" uid="uid://7xcoa366edvd" path="res://powerup.tscn" id="6_i2t4f"]
+[ext_resource type="Script" uid="uid://deho1fpnyqrnd" path="res://kill_zone.gd" id="7_n6hdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ahmb0"]
-size = Vector2(4000, 40)
+size = Vector2(4397, 40)
 
 [sub_resource type="LabelSettings" id="LabelSettings_p20yd"]
 font_size = 64
@@ -16,13 +20,29 @@ font_size = 64
 font_size = 32
 font_color = Color(0.9997532, 0.477652, 0.41378137, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvfp6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ty30s"]
+size = Vector2(100, 3000)
+
 [node name="Level" type="Node2D" unique_id=1922790809]
+
+[node name="Powerup" parent="." unique_id=1544786388 instance=ExtResource("6_i2t4f")]
+z_index = 5
+position = Vector2(1603, 146)
+
+[node name="Powerup2" parent="." unique_id=2064249479 instance=ExtResource("6_i2t4f")]
+z_index = 5
+position = Vector2(2484, 363)
+kind = "jump"
 
 [node name="Background" type="Parallax2D" parent="." unique_id=524772196]
 scroll_scale = Vector2(0, 0)
+scroll_offset = Vector2(-135, -41)
 repeat_size = Vector2(2880, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=1182980425]
+position = Vector2(132, 38)
 scale = Vector2(2.4104168, 2.6875)
 texture = ExtResource("1_f2txt")
 centered = false
@@ -31,13 +51,32 @@ centered = false
 position = Vector2(576, 100)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=368505521]
+limit_left = 0
+limit_right = 2950
+limit_bottom = 650
 position_smoothing_enabled = true
 
 [node name="floor" type="StaticBody2D" parent="." unique_id=1308364004]
 position = Vector2(576, 600)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor" unique_id=1492737008]
+position = Vector2(198.5, 0)
 shape = SubResource("RectangleShape2D_ahmb0")
+
+[node name="Sprite2D" type="Sprite2D" parent="floor/CollisionShape2D" unique_id=1823425145]
+position = Vector2(-198, 51.000034)
+scale = Vector2(1.1602823, 0.8756758)
+texture = ExtResource("4_i2t4f")
+
+[node name="Sprite2D2" type="Sprite2D" parent="floor/CollisionShape2D" unique_id=1369133621]
+position = Vector2(952, 51.000034)
+scale = Vector2(1.1602823, 0.8756758)
+texture = ExtResource("4_i2t4f")
+
+[node name="Sprite2D3" type="Sprite2D" parent="floor/CollisionShape2D" unique_id=1730087495]
+position = Vector2(2101.9985, 51.000034)
+scale = Vector2(1.1602823, 0.8756758)
+texture = ExtResource("4_i2t4f")
 
 [node name="pad" parent="." unique_id=1491827375 instance=ExtResource("2_vonw3")]
 position = Vector2(777, 556)
@@ -46,13 +85,34 @@ position = Vector2(777, 556)
 position = Vector2(178, -60)
 
 [node name="pad2" parent="pad" unique_id=267306549 instance=ExtResource("2_vonw3")]
-position = Vector2(-264, -35)
+position = Vector2(446, -125)
+
+[node name="pad3" parent="pad" unique_id=1785256353 instance=ExtResource("2_vonw3")]
+position = Vector2(446, -125)
+
+[node name="pad4" parent="pad" unique_id=1035952873 instance=ExtResource("2_vonw3")]
+position = Vector2(446, -125)
+
+[node name="pad5" parent="pad" unique_id=832935413 instance=ExtResource("2_vonw3")]
+position = Vector2(446, -125)
+
+[node name="pad6" parent="pad" unique_id=488688678 instance=ExtResource("2_vonw3")]
+position = Vector2(602, -297)
 
 [node name="Spike" parent="." unique_id=1852113977 instance=ExtResource("3_oi3di")]
 position = Vector2(814, 441)
 
+[node name="Spike2" parent="." unique_id=1222409291 instance=ExtResource("3_oi3di")]
+position = Vector2(1162, 361)
+
+[node name="Spike3" parent="." unique_id=608078819 instance=ExtResource("3_oi3di")]
+position = Vector2(1244, 210)
+
+[node name="Spike4" parent="." unique_id=100904233 instance=ExtResource("3_oi3di")]
+position = Vector2(1800, 441)
+
 [node name="goal" parent="." unique_id=2125473654 instance=ExtResource("4_0b4ue")]
-position = Vector2(296, 480)
+position = Vector2(2729, 262)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=561546444]
 
@@ -88,3 +148,62 @@ offset_bottom = 34.287994
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 32
 text = "0.0"
+
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1130835793]
+process_mode = 3
+script = ExtResource("6_1ainy")
+
+[node name="Dim" type="ColorRect" parent="PauseLayer" unique_id=2064163458]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Dim"
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="ResumeBtn" type="Button" parent="PauseLayer" unique_id=1259391175]
+offset_left = 522.0
+offset_top = 121.0
+offset_right = 654.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 32
+text = "Resume"
+
+[node name="MusicBtn" type="Button" parent="PauseLayer" unique_id=229956192]
+offset_left = 511.0
+offset_top = 253.0
+offset_right = 677.0
+offset_bottom = 306.0
+theme_override_font_sizes/font_size = 32
+text = "Music: ON"
+
+[node name="MenuBtn" type="Button" parent="PauseLayer" unique_id=725089525]
+offset_left = 499.0
+offset_top = 187.0
+offset_right = 681.0
+offset_bottom = 240.0
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseLayer" unique_id=131959525]
+
+[node name="KillZone" type="Area2D" parent="." unique_id=413350226]
+position = Vector2(-107, -183)
+script = ExtResource("7_n6hdu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=1155115804]
+position = Vector2(6000, 100)
+shape = SubResource("RectangleShape2D_dvfp6")
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=1109455152]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=1773671882]
+position = Vector2(-50, 0)
+shape = SubResource("RectangleShape2D_ty30s")
+
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=656773465]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=420682261]
+position = Vector2(2965, 36)
+shape = SubResource("RectangleShape2D_ty30s")
